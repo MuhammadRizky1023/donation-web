@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <div id="donation-cards" class="row"></div>
-                    <p id="no-donations-message" class="text-center" style="display: none;">No donations available</p>
+                    <p id="no-donations-message" class="text-center">No donations available</p>
                 </div>
             </div>
         </div>
