@@ -9,6 +9,19 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+        }
+    </style>
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBGcJRCr6Kc7pDYoJhhELm0IAAVzh3tLmI",
@@ -62,9 +75,12 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4 content">
         @yield('content')
     </div>
 
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 KamiDonasi. All rights reserved.</p>
+    </footer>
 </body>
 </html>
