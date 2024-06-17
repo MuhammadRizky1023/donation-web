@@ -11,8 +11,11 @@ routes are loaded by the RouteServiceProvider within a group which
 contains the "web" middleware group. Now create something great!
 */
 
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
 Route::get('home', [AuthController::class, 'showHome'])->name('home');
 Route::post('/donations/token', [DonationController::class, 'getToken'])->name('donations.token');
 Route::post('/donations/notification', [DonationController::class, 'notificationHandler'])->name('donations.notification');

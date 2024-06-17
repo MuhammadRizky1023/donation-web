@@ -59,13 +59,14 @@
             reader.onload = function(e) {
                 const imageData = e.target.result;
 
-                db.collection("donations").add({
+                const newDonationRef = db.push();
+                newDonationRef.set({
                     name: name,
                     amount: parseInt(amount),
                     image: imageData,
-                    created_at: firebase.firestore.FieldValue.serverTimestamp()
+                    created_at: firebase.database.ServerValue.TIMESTAMP
                 })
-                .then((docRef) => {
+                .then(() => {
                     alert("Donasi berhasil ditambahkan!");
                     window.location.href = "{{ route('donations') }}";
                 })
@@ -80,4 +81,3 @@
     });
 </script>
 @endsection
-

@@ -6,9 +6,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
     <style>
         html, body {
             height: 100%;
@@ -22,19 +19,6 @@
             flex: 1;
         }
     </style>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyBGcJRCr6Kc7pDYoJhhELm0IAAVzh3tLmI",
-            authDomain: "donation-40e12.firebaseapp.com",
-            projectId: "donation-40e12",
-            storageBucket: "donation-40e12.appspot.com",
-            messagingSenderId: "401958962538",
-            appId: "1:401958962538:web:0ae1877ef0511085891113",
-            measurementId: "G-2WVCY3T67P"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

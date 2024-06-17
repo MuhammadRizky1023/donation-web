@@ -31,9 +31,11 @@
 
 <script>
     const donationId = "{{ $id }}";
-    db.collection("donations").doc(donationId).get().then((doc) => {
-        if (doc.exists) {
-            const donation = doc.data();
+    const dbRef = firebase.database().ref('donations').child(donationId);
+
+    dbRef.once('value', (snapshot) => {
+        const donation = snapshot.val();
+        if (donation) {
             document.getElementById('name').value = donation.name;
             document.getElementById('amount').value = donation.amount;
 
@@ -42,10 +44,10 @@
                 document.getElementById('image-preview').src = donation.imageURL;
             }
         } else {
-            console.log("No such document!");
+            console.log("Donasi tidak ditemukan!");
         }
     }).catch((error) => {
-        console.log("Error getting document:", error);
+        console.error("Error getting donation:", error);
     });
 
     document.getElementById('edit-donation-form').addEventListener('submit', function(event) {
@@ -67,24 +69,25 @@
             updateDonationData(name, parseInt(amount), null);
         }
     });
+
     function updateDonationData(name, amount, imageURL) {
         const donationData = {
             name: name,
             amount: amount,
-            updated_at: firebase.firestore.FieldValue.serverTimestamp()
+            updated_at: firebase.database.ServerValue.TIMESTAMP
         };
 
         if (imageURL) {
             donationData.imageURL = imageURL;
         }
 
-        db.collection("donations").doc(donationId).update(donationData)
+        dbRef.update(donationData)
         .then(() => {
             alert("Donasi berhasil diupdate!");
             window.location.href = "{{ route('donations') }}";
         })
         .catch((error) => {
-            console.error("Error updating document: ", error);
+            console.error("Error updating donation: ", error);
         });
     }
 </script>
